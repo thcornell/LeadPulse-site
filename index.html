@@ -13,13 +13,38 @@
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
       color: #0f172a;
-      background: linear-gradient(180deg, #f8fbff, #eef5ff);
+      background: linear-gradient(180deg, #f9fbff 0%, #eef4ff 100%);
+      overflow-x: hidden;
     }
 
+    html { scroll-behavior: smooth; }
+
     :root {
-      --primary: #1e3a8a;
-      --accent: #2563eb;
+      --primary: #1e40af;
+      --accent: #3b82f6;
       --gray: #64748b;
+    }
+
+    /* SOFT BACKGROUND GLOWS */
+    .bg1, .bg2 {
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      filter: blur(80px);
+      z-index: 0;
+    }
+
+    .bg1 {
+      background: rgba(59,130,246,0.15);
+      top: -150px;
+      right: -100px;
+    }
+
+    .bg2 {
+      background: rgba(30,64,175,0.15);
+      bottom: -150px;
+      left: -100px;
     }
 
     header {
@@ -29,7 +54,9 @@
       backdrop-filter: blur(10px);
       display: flex;
       justify-content: space-between;
+      align-items: center;
       padding: 18px 40px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
       z-index: 10;
     }
 
@@ -37,6 +64,7 @@
       display: flex;
       align-items: center;
       font-weight: 700;
+      font-size: 1.4rem;
     }
 
     .logo-icon {
@@ -62,7 +90,9 @@
 
     .hero {
       text-align: center;
-      padding: 120px 20px 80px;
+      padding: 130px 20px 90px;
+      position: relative;
+      z-index: 1;
     }
 
     .hero h1 {
@@ -73,42 +103,22 @@
     .hero p {
       font-size: 1.2rem;
       color: var(--gray);
-      max-width: 650px;
+      max-width: 600px;
       margin: auto;
-    }
-
-    .cta-btn {
-      margin-top: 25px;
-      display: inline-block;
-      background: var(--primary);
-      color: white;
-      padding: 14px 28px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .cta-btn:hover {
-      background: var(--accent);
     }
 
     .container {
       max-width: 1100px;
       margin: auto;
       padding: 60px 20px;
+      position: relative;
+      z-index: 1;
     }
 
     h2 {
       text-align: center;
       margin-bottom: 20px;
-    }
-
-    /* TRUST BAR */
-    .trust {
-      text-align: center;
-      margin-top: 30px;
-      color: var(--gray);
-      font-size: 0.95rem;
+      font-size: 2rem;
     }
 
     /* SERVICES */
@@ -123,14 +133,16 @@
       flex: 1 1 250px;
       padding: 25px;
       border-radius: 14px;
-      background: white;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(8px);
       box-shadow: 0 15px 40px rgba(0,0,0,0.06);
       transition: 0.25s;
       border-top: 4px solid var(--primary);
     }
 
     .card:hover {
-      transform: translateY(-6px);
+      transform: translateY(-5px);
+      border-top: 4px solid var(--accent);
     }
 
     .card h3 {
@@ -142,35 +154,50 @@
       color: var(--gray);
     }
 
-    /* BENEFITS */
-    .benefits {
+    /* WHY */
+    .why {
       text-align: center;
-      max-width: 800px;
+      max-width: 750px;
       margin: auto;
       color: var(--gray);
-      line-height: 1.7;
+      line-height: 1.6;
     }
 
-    /* FINAL CTA */
-    .final-cta {
+    /* CONTACT */
+    .contact {
+      text-align: center;
+      margin-top: 60px;
+    }
+
+    .contact a {
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .contact a:hover {
+      text-decoration: underline;
+    }
+
+    /* HIGHLIGHT */
+    .highlight {
       background: linear-gradient(135deg, var(--primary), var(--accent));
       color: white;
       text-align: center;
       padding: 80px 20px;
       margin-top: 60px;
-    }
-
-    .final-cta a {
-      color: white;
-      font-weight: 700;
-      text-decoration: underline;
+      border-radius: 20px;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     footer {
       text-align: center;
-      padding: 20px;
+      padding: 25px;
       background: #0f172a;
       color: white;
+      margin-top: 60px;
     }
 
     @media(max-width:768px){
@@ -181,6 +208,11 @@
 
 <body>
 
+  <!-- BACKGROUND GLOWS -->
+  <div class="bg1"></div>
+  <div class="bg2"></div>
+
+  <!-- NAV -->
   <header>
     <div class="logo">
       <div class="logo-icon">LP</div>
@@ -195,64 +227,62 @@
 
   <!-- HERO -->
   <section class="hero">
-    <h1>Turn Your Online Presence Into More Customers</h1>
-    <p>
-      We build and optimize your website and Google presence so your business gets found,
-      trusted, and chosen.
-    </p>
-    <a href="#contact" class="cta-btn">Get More Customers</a>
-
-    <div class="trust">
-      Websites • Google Optimization • Reviews • Automation
-    </div>
+    <h1>Be Seen. Be Chosen.</h1>
+    <p>We help businesses grow through stronger online presence, better visibility, and smarter automation.</p>
   </section>
 
   <!-- SERVICES -->
   <div class="container" id="services">
-    <h2>How We Help</h2>
-
+    <h2>What We Do</h2>
     <div class="services">
+
       <div class="card">
         <h3>Website Creation</h3>
-        <p>Professional websites designed to convert visitors into paying customers.</p>
+        <p>Modern websites that improve Google rankings and convert visitors into customers.</p>
       </div>
 
       <div class="card">
-        <h3>Google Business Optimization</h3>
-        <p>Appear higher in search results and attract more local customers.</p>
+        <h3>Google Optimization</h3>
+        <p>Get found locally and increase your visibility where customers are searching.</p>
       </div>
 
       <div class="card">
         <h3>Traffic & Reviews</h3>
-        <p>Increase visibility and build trust with more customer reviews.</p>
+        <p>More visibility leads to more reviews, stronger trust, and more conversions.</p>
       </div>
 
       <div class="card">
         <h3>Automation</h3>
-        <p>Capture leads and follow up automatically so you never miss business.</p>
+        <p>Automate follow-ups and communication so you never miss a lead.</p>
       </div>
+
     </div>
   </div>
 
   <!-- WHY -->
   <div class="container" id="why">
-    <h2>Why This Matters</h2>
-    <p class="benefits">
-      Most customers search online before choosing a business. If your website and Google presence
-      aren’t optimized, you’re losing potential customers to competitors who are easier to find and trust.
-      We fix that — helping your business rank higher, get more reviews, and convert more visitors.
+    <h2>Why It Matters</h2>
+    <p class="why">
+      Your website directly impacts how your business ranks on Google. A strong online presence increases visibility,
+      drives more traffic, and leads to more customer reviews — helping your business stand out and grow.
     </p>
   </div>
 
-  <!-- FINAL CTA -->
-  <section class="final-cta" id="contact">
-    <h2>Start Getting More Customers Today</h2>
-    <p>Contact us directly to get started:</p>
+  <!-- CONTACT -->
+  <div class="container contact" id="contact">
+    <h2>Contact</h2>
+    <p>Reach out to get started:</p>
     <p><a href="mailto:thcornell@gmail.com">thcornell@gmail.com</a></p>
+  </div>
+
+  <!-- HIGHLIGHT -->
+  <section class="highlight">
+    <h2>Your Website Drives Growth</h2>
+    <p>Better visibility → more clicks → more reviews → more customers.</p>
   </section>
 
   <footer>
-    <p>© 2026 LeadPulse</p>
+    <p>© 2026 LeadPulse • Digital Marketing</p>
   </footer>
 
 </body>
