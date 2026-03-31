@@ -22,32 +22,31 @@
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             color: var(--slate);
-            /* Base color is now a soft indigo-tinted slate */
-            background-color: #f0f4ff; 
             line-height: 1.6;
+            /* Added deep, colorful background contrast */
+            background: linear-gradient(135deg, #f0f7ff 0%, #e0eaff 50%, #f9faff 100%);
+            min-height: 100vh;
         }
 
-        /* Enhanced High-Contrast Background Gradient */
-        .bg-mesh {
+        /* Subtle mesh overlay to add texture to the color */
+        .bg-pattern {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
-            background-image: 
-                radial-gradient(at 0% 0%, hsla(225,60%,60%,0.15) 0, transparent 50%), 
-                radial-gradient(at 50% 100%, hsla(217,91%,60%,0.1) 0, transparent 50%),
-                radial-gradient(at 100% 0%, hsla(240,80%,70%,0.12) 0, transparent 50%);
+            background-image: radial-gradient(rgba(30, 64, 175, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
         }
 
         header {
             position: sticky;
             top: 0;
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(12px);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.2rem 10%;
-            border-bottom: 1px solid rgba(0,0,0,0.08);
+            padding: 1rem 10%;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
             z-index: 100;
         }
 
@@ -55,7 +54,7 @@
             display: flex;
             align-items: center;
             font-weight: 800;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             letter-spacing: -0.5px;
         }
 
@@ -77,7 +76,7 @@
             text-decoration: none;
             color: var(--gray);
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             transition: 0.3s;
         }
 
@@ -86,7 +85,7 @@
         .btn-nav {
             background: var(--slate);
             color: white !important;
-            padding: 12px 24px;
+            padding: 10px 20px;
             border-radius: 50px;
             margin-left: 10px;
         }
@@ -96,7 +95,7 @@
             align-items: center;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 120px 20px;
+            padding: 100px 20px;
             gap: 60px;
         }
 
@@ -105,15 +104,15 @@
         .hero h1 {
             font-size: clamp(2.5rem, 5vw, 4rem);
             line-height: 1.1;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             font-weight: 800;
             color: var(--slate);
         }
 
         .hero p {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             color: var(--gray);
-            margin-bottom: 35px;
+            margin-bottom: 30px;
             max-width: 550px;
         }
 
@@ -122,43 +121,194 @@
         .btn-primary {
             background: var(--primary);
             color: white;
-            padding: 18px 36px;
+            padding: 16px 32px;
             border-radius: 12px;
             text-decoration: none;
             font-weight: 700;
-            box-shadow: 0 10px 25px rgba(30, 64, 175, 0.25);
+            box-shadow: 0 10px 20px rgba(30, 64, 175, 0.2);
             transition: 0.3s ease;
         }
 
         .btn-primary:hover { transform: translateY(-2px); background: var(--primary-dark); }
 
+        /* Updated Visual - Removed stats, kept it professional */
         .hero-visual {
             flex: 0.8;
             background: white;
-            padding: 50px;
-            border-radius: 32px;
-            border: 1px solid rgba(255,255,255,0.8);
-            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.12);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
 
-        .hero-visual h3 { font-size: 1.8rem; margin-bottom: 15px; color: var(--primary); }
+        .hero-visual h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .hero-visual p {
+            font-size: 1rem;
+            color: var(--gray);
+        }
 
         .section {
             max-width: 1200px;
-            margin: 100px auto;
+            margin: 80px auto;
             padding: 0 20px;
         }
 
         .section-header { text-align: center; margin-bottom: 60px; }
-        .section-header h2 { font-size: 2.8rem; font-weight: 800; }
+        .section-header h2 { font-size: 2.5rem; font-weight: 800; }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
 
         .card {
-            padding: 45px;
-            border-radius: 24px;
-            background: rgba(255, 255, 255, 0.
+            padding: 40px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            background: white;
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+
+        /* Clean SVG Icon Replacements */
+        .card-icon {
+            width: 48px; height: 48px;
+            background: #eff6ff;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--primary);
+        }
+
+        .card h3 { margin-bottom: 12px; font-weight: 700; }
+        .card p { color: var(--gray); font-size: 0.95rem; }
+
+        .trust-banner {
+            background: rgba(255, 255, 255, 0.5);
+            padding: 80px 0;
+            text-align: center;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        footer {
+            background: var(--slate);
+            color: white;
+            padding: 80px 10% 40px;
+            text-align: center;
+        }
+
+        .footer-cta h2 { font-size: 2.5rem; margin-bottom: 20px; }
+        .footer-bottom { margin-top: 60px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; color: #94a3b8; }
+
+        @media(max-width:960px){
+            .hero { flex-direction: column; text-align: center; padding-top: 60px; }
+            .hero p { margin: 0 auto 30px; }
+            .hero-btns { justify-content: center; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-pattern"></div>
+
+    <header>
+        <div class="logo">
+            <div class="logo-icon">LP</div>
+            LeadPulse
+        </div>
+        <nav>
+            <a href="#services">Services</a>
+            <a href="#why">Process</a>
+            <a href="#contact" class="btn-nav">Let's Talk</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-text">
+                <h1>Scale Your Business Without the Guesswork.</h1>
+                <p>We build high-converting websites and SEO strategies that turn local searches into lifelong customers.</p>
+                <div class="hero-btns">
+                    <a href="#contact" class="btn-primary">Start Your Growth</a>
+                    <a href="#services" style="padding: 16px; color: var(--slate); font-weight: 600; text-decoration: none;">See Services →</a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <h3>Our Core Mission</h3>
+                <p>Helping small agencies bridge the gap between "being online" and "winning online" with high-performance digital infrastructure.</p>
+            </div>
+        </section>
+
+        <section class="section" id="services">
+            <div class="section-header">
+                <h2>Solutions for Local Dominance</h2>
+                <p>Tailored strategies designed for small but ambitious agencies.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="card">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                    </div>
+                    <h3>Modern Websites</h3>
+                    <p>Clean, fast, and mobile-first. We build websites that don't just look pretty—they convert traffic into cash.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    </div>
+                    <h3>Local SEO</h3>
+                    <p>Own the "Near Me" search. We optimize your Google Business Profile to put you at the top of the map pack.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                    </div>
+                    <h3>Lead Automation</h3>
+                    <p>Stop losing leads to slow replies. We set up systems that response instantly the second a prospect contacts you.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="trust-banner" id="why">
+            <div class="section" style="margin: 0 auto;">
+                <h2 style="margin-bottom: 20px;">Why LeadPulse?</h2>
+                <p style="max-width: 700px; margin: 0 auto; font-size: 1.1rem; color: var(--gray);">
+                    Most agencies give you "impressions." We give you <strong>appointments</strong>. By connecting your website performance to your Google reputation, we make your brand the obvious choice.
+                </p>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-cta" id="contact">
+                <h2>Ready to grow?</h2>
+                <p style="margin-bottom: 30px; opacity: 0.8;">Schedule a free 15-minute audit of your current online presence.</p>
+                <a href="mailto:thcornell@gmail.com" class="btn-primary" style="background: white; color: var(--slate); box-shadow: none;">Book My Audit</a>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 LeadPulse Agency. Built for performance.</p>
+            </div>
+        </footer>
+    </main>
+
+</body>
+</html>
