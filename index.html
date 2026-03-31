@@ -1,288 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LeadPulse</title>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeadPulse | High-Performance Marketing</title>
+    <meta name="description" content="LeadPulse helps small businesses grow through modern websites and Google optimization.">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #1e40af;
+            --primary-dark: #1e3a8a;
+            --accent: #3b82f6;
+            --slate: #0f172a;
+            --gray: #64748b;
+            --light: #f8fafc;
+        }
 
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      color: #0f172a;
-      background-color: #ffffff;
-      /* Gradient background for depth */
-      background: linear-gradient(180deg, #ffffff 0%, #f0f4ff 100%);
-      overflow-x: hidden;
-      position: relative;
-    }
+        * { margin:0; padding:0; box-sizing:border-box; scroll-behavior: smooth; }
 
-    /* Background Color Contrast Blobs */
-    body::before {
-      content: "";
-      position: absolute;
-      top: -10%;
-      right: -10%;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
-      z-index: -1;
-    }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--slate);
+            /* Base color is now a soft indigo-tinted slate */
+            background-color: #f0f4ff; 
+            line-height: 1.6;
+        }
 
-    body::after {
-      content: "";
-      position: absolute;
-      top: 40%;
-      left: -10%;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(30, 64, 175, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
-      z-index: -1;
-    }
+        /* Enhanced High-Contrast Background Gradient */
+        .bg-mesh {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(225,60%,60%,0.15) 0, transparent 50%), 
+                radial-gradient(at 50% 100%, hsla(217,91%,60%,0.1) 0, transparent 50%),
+                radial-gradient(at 100% 0%, hsla(240,80%,70%,0.12) 0, transparent 50%);
+        }
 
-    :root {
-      --primary: #1e40af;
-      --accent: #3b82f6;
-      --gray: #64748b;
-      --light-section: rgba(248, 251, 255, 0.8);
-    }
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 10%;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            z-index: 100;
+        }
 
-    header {
-      position: sticky;
-      top: 0;
-      background: rgba(255,255,255,0.85);
-      backdrop-filter: blur(12px);
-      display: flex;
-      justify-content: space-between;
-      padding: 18px 40px;
-      border-bottom: 1px solid rgba(229, 231, 235, 0.5);
-      z-index: 100;
-    }
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: 800;
+            font-size: 1.3rem;
+            letter-spacing: -0.5px;
+        }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      font-weight: 700;
-    }
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            margin-right: 10px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8rem;
+        }
 
-    .logo-icon {
-      width: 36px;
-      height: 36px;
-      margin-right: 10px;
-      border-radius: 8px;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: 800;
-    }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: var(--gray);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: 0.3s;
+        }
 
-    nav a {
-      margin-left: 25px;
-      text-decoration: none;
-      color: var(--gray);
-      font-weight: 500;
-    }
+        nav a:hover { color: var(--primary); }
 
-    nav a:hover { color: var(--primary); }
+        .btn-nav {
+            background: var(--slate);
+            color: white !important;
+            padding: 12px 24px;
+            border-radius: 50px;
+            margin-left: 10px;
+        }
 
-    .hero {
-      text-align: center;
-      padding: 140px 20px 100px;
-      position: relative;
-    }
+        .hero {
+            display: flex;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 20px;
+            gap: 60px;
+        }
 
-    .hero h1 {
-      font-size: 3.5rem;
-      margin-bottom: 15px;
-      letter-spacing: -1px;
-      background: linear-gradient(135deg, #0f172a 0%, var(--primary) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+        .hero-text { flex: 1.2; }
 
-    .hero p {
-      font-size: 1.25rem;
-      color: var(--gray);
-      max-width: 600px;
-      margin: auto;
-    }
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 24px;
+            font-weight: 800;
+            color: var(--slate);
+        }
 
-    .section {
-      padding: 90px 20px;
-    }
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--gray);
+            margin-bottom: 35px;
+            max-width: 550px;
+        }
 
-    .light {
-      background: var(--light-section);
-      backdrop-filter: blur(5px);
-      border-top: 1px solid #e5e7eb;
-      border-bottom: 1px solid #e5e7eb;
-    }
+        .hero-btns { display: flex; gap: 15px; }
 
-    .container {
-      max-width: 1100px;
-      margin: auto;
-    }
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            padding: 18px 36px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 10px 25px rgba(30, 64, 175, 0.25);
+            transition: 0.3s ease;
+        }
 
-    h2 {
-      text-align: center;
-      margin-bottom: 35px;
-      font-size: 2.2rem;
-      font-weight: 800;
-    }
+        .btn-primary:hover { transform: translateY(-2px); background: var(--primary-dark); }
 
-    .services {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 24px;
-      margin-top: 30px;
-    }
+        .hero-visual {
+            flex: 0.8;
+            background: white;
+            padding: 50px;
+            border-radius: 32px;
+            border: 1px solid rgba(255,255,255,0.8);
+            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.12);
+        }
 
-    .card {
-      flex: 1 1 250px;
-      padding: 35px;
-      border-radius: 16px;
-      background: white;
-      border: 1px solid rgba(229, 231, 235, 0.8);
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-      transition: 0.3s;
-    }
+        .hero-visual h3 { font-size: 1.8rem; margin-bottom: 15px; color: var(--primary); }
 
-    .card:hover {
-      transform: translateY(-5px);
-      border-color: var(--accent);
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
-    }
+        .section {
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 0 20px;
+        }
 
-    .card h3 {
-      margin-bottom: 12px;
-      color: var(--primary);
-      font-size: 1.3rem;
-    }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 2.8rem; font-weight: 800; }
 
-    .card p {
-      color: var(--gray);
-      line-height: 1.5;
-    }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
 
-    .why {
-      text-align: center;
-      max-width: 750px;
-      margin: auto;
-      color: var(--gray);
-      line-height: 1.7;
-      font-size: 1.1rem;
-    }
-
-    .contact {
-      text-align: center;
-    }
-
-    .contact a {
-      color: var(--primary);
-      font-weight: 700;
-      text-decoration: none;
-      font-size: 1.2rem;
-    }
-
-    .contact a:hover {
-      text-decoration: underline;
-    }
-
-    .highlight {
-      background: linear-gradient(135deg, var(--primary) 0%, #1e3a8a 100%);
-      color: white;
-      text-align: center;
-      padding: 80px 20px;
-    }
-
-    .highlight h2 { margin-bottom: 10px; }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      background: #0f172a;
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 0.9rem;
-    }
-
-    @media(max-width:768px){
-      .hero h1 { font-size: 2.5rem; }
-      header { padding: 18px 20px; }
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    <div class="logo">
-      <div class="logo-icon">LP</div>
-      LeadPulse
-    </div>
-    <nav>
-      <a href="#services">Services</a>
-      <a href="#why">Why</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
-
-  <section class="hero">
-    <h1>Be Seen. Be Chosen.</h1>
-    <p>We help businesses grow through stronger online presence, better visibility, and smarter automation.</p>
-  </section>
-
-  <section class="section light" id="services">
-    <div class="container">
-      <h2>What We Do</h2>
-      <div class="services">
-        <div class="card">
-          <h3>Website Creation</h3>
-          <p>Modern websites that improve Google rankings and convert visitors into customers.</p>
-        </div>
-        <div class="card">
-          <h3>Google Optimization</h3>
-          <p>Get found locally and increase your visibility where customers are searching.</p>
-        </div>
-        <div class="card">
-          <h3>Traffic & Reviews</h3>
-          <p>More visibility leads to more reviews, stronger trust, and more conversions.</p>
-        </div>
-        <div class="card">
-          <h3>Automation</h3>
-          <p>Automate follow-ups and communication so you never miss a lead.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="why">
-    <div class="container">
-      <h2>Why It Matters</h2>
-      <p class="why">
-        Your website directly impacts how your business ranks on Google. A strong online presence increases visibility,
-        drives more traffic, and leads to more customer reviews — helping your business stand out and grow.
-      </p>
-    </div>
-  </section>
-
-  <section class="section light contact" id="contact">
-    <div class="container">
-      <h2>Contact</h2>
-      <p style="margin-bottom: 15px; color: var(--gray);">Reach out to get started:</p>
-      <p><a href="mailto:thcornell@gmail.com">thcornell@gmail.com</a></p>
-    </div>
-  </section>
-
-  <section class="highlight">
-    <h2>Your Website Drives Growth</h2>
-    <p>Better visibility &rarr; more clicks &rarr; more reviews &rarr; more customers.</p>
-  </section>
-
-  <footer>
-    <p>&copy; 2026 LeadPulse &bull; Digital Marketing</p>
-  </footer>
-
-</body>
-</html>
+        .card {
+            padding: 45px;
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.
