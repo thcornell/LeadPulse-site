@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>LeadPulse — Websites for Local Businesses</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230B1929'/><text x='5' y='23' font-family='Georgia,serif' font-size='20' font-weight='600' fill='%232D8CFF'>L</text><circle cx='23' cy='10' r='4' fill='none' stroke='%232D8CFF' stroke-width='1.8'/><line x1='26' y1='13' x2='29' y2='16' stroke='%232D8CFF' stroke-width='1.8' stroke-linecap='round'/></svg>" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -391,6 +392,7 @@
   }
   .why-point-desc { font-size: 0.875rem; color: var(--ink-light); font-weight: 300; line-height: 1.75; }
 
+  /* WHY VISUAL — delivery card */
   .why-visual {
     background: var(--navy);
     border-radius: 8px; padding: 2.5rem;
@@ -409,26 +411,73 @@
     background: radial-gradient(circle, rgba(45,140,255,0.14) 0%, transparent 70%);
   }
   .why-visual > * { position: relative; z-index: 1; }
-  .quote-mark {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 5rem; color: var(--blue);
-    line-height: 0.5; margin-bottom: 1.25rem; display: block; opacity: 0.55;
+
+  .delivery-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 1.75rem;
   }
-  .testimonial-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.35rem; font-style: italic;
-    color: rgba(255,255,255,0.83); line-height: 1.65; margin-bottom: 1.75rem;
+  .delivery-badge {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: rgba(45,140,255,0.15); border: 1px solid rgba(45,140,255,0.3);
+    color: var(--blue); border-radius: 2px;
+    font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 4px 10px;
   }
-  .testimonial-author { display: flex; align-items: center; gap: 0.85rem; }
-  .author-avatar {
-    width: 42px; height: 42px;
-    background: rgba(45,140,255,0.18); border: 1px solid rgba(45,140,255,0.35);
-    border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem; font-weight: 600; color: var(--blue); flex-shrink: 0;
+  .delivery-dot {
+    width: 5px; height: 5px; border-radius: 50%; background: var(--blue);
+    animation: blink 2s ease-in-out infinite;
   }
-  .author-name { font-size: 0.875rem; font-weight: 500; color: var(--white); }
-  .author-biz { font-size: 0.8rem; color: rgba(255,255,255,0.38); font-weight: 300; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  .delivery-stat {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.2rem; font-weight: 600; line-height: 1;
+    color: var(--white); margin-bottom: 0.25rem;
+  }
+  .delivery-stat span { color: var(--blue); }
+  .delivery-stat-label {
+    font-size: 0.78rem; font-weight: 300;
+    color: rgba(255,255,255,0.38); letter-spacing: 0.04em;
+    margin-bottom: 2rem;
+  }
+
+  .delivery-divider {
+    border: none; border-top: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 1.75rem;
+  }
+
+  .delivery-features { display: flex; flex-direction: column; gap: 0.85rem; }
+  .delivery-feature {
+    display: flex; align-items: flex-start; gap: 0.75rem;
+  }
+  .delivery-feature-icon {
+    width: 28px; height: 28px; border-radius: 4px; flex-shrink: 0;
+    background: rgba(45,140,255,0.12); border: 1px solid rgba(45,140,255,0.2);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .delivery-feature-icon svg {
+    width: 13px; height: 13px; stroke: var(--blue); fill: none; stroke-width: 2;
+  }
+  .delivery-feature-text { }
+  .delivery-feature-title {
+    font-size: 0.82rem; font-weight: 500; color: rgba(255,255,255,0.82);
+    line-height: 1.2; margin-bottom: 0.15rem;
+  }
+  .delivery-feature-desc {
+    font-size: 0.74rem; font-weight: 300; color: rgba(255,255,255,0.35);
+    line-height: 1.4;
+  }
+
+  .delivery-cta {
+    margin-top: 1.75rem;
+    display: block; width: 100%; text-align: center;
+    background: var(--blue); color: var(--white);
+    padding: 0.8rem 1.5rem; border-radius: 3px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 500;
+    letter-spacing: 0.04em; text-transform: uppercase; text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .delivery-cta:hover { background: var(--blue-dark); transform: translateY(-1px); }
 
   /* CTA */
   .cta {
@@ -532,7 +581,7 @@
   </ul>
 </nav>
 
-<!-- HERO — deep navy, dot grid, glow blobs -->
+<!-- HERO -->
 <section class="hero">
   <div class="hero-grid">
     <div class="hero-content">
@@ -558,7 +607,7 @@
   </div>
 </section>
 
-<!-- SERVICES — white with subtle diagonal stripe, cards lift on hover -->
+<!-- SERVICES -->
 <section class="services" id="services">
   <div class="section-inner">
     <div class="services-header">
@@ -569,7 +618,6 @@
       <p class="services-desc">No bloated retainers. No confusing reports. Just the three things that actually move the needle for small businesses — with simple monthly hosting to keep everything running smoothly.</p>
     </div>
     <div class="services-grid">
-
       <div class="service-card">
         <div class="service-icon">
           <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="14" rx="1"/><path d="M8 21h8M12 17v4"/></svg>
@@ -578,7 +626,6 @@
         <p class="service-desc">Clean, fast, and mobile-first. We build sites that don't just look great — they're engineered to convert visitors into calls, bookings, and walk-ins.</p>
         <a href="#portfolio" class="service-link">See examples →</a>
       </div>
-
       <div class="service-card">
         <div class="service-icon">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
@@ -587,7 +634,6 @@
         <p class="service-desc">Own the "near me" search results. We optimize your Google Business Profile and on-site content so you show up at the top of the map pack.</p>
         <a href="#contact" class="service-link">Learn more →</a>
       </div>
-
       <div class="service-card">
         <div class="service-icon">
           <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
@@ -596,12 +642,11 @@
         <p class="service-desc">Stop losing leads to slow response times. We set up instant-reply systems so every new inquiry gets followed up the second it comes in.</p>
         <a href="#contact" class="service-link">Learn more →</a>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- PORTFOLIO — dark navy, dot grid, glass cards -->
+<!-- PORTFOLIO -->
 <section class="portfolio" id="portfolio">
   <div class="section-inner">
     <div class="portfolio-header">
@@ -612,7 +657,6 @@
       <p class="portfolio-note">Click any card to visit<br>the live site.</p>
     </div>
     <div class="portfolio-grid">
-
       <a class="portfolio-card" href="https://thcornell.github.io/Landscaping/" target="_blank" rel="noopener">
         <div class="portfolio-thumb" style="background: linear-gradient(135deg,#1a3820,#2d5a27);">
           <div class="portfolio-thumb-inner">
@@ -642,7 +686,6 @@
           <div class="portfolio-arrow">Visit live site <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
         </div>
       </a>
-
       <a class="portfolio-card" href="https://thcornell.github.io/Plumber/" target="_blank" rel="noopener">
         <div class="portfolio-thumb" style="background: linear-gradient(135deg,#0d1f36,#1a3a5c);">
           <div class="portfolio-thumb-inner">
@@ -672,12 +715,11 @@
           <div class="portfolio-arrow">Visit live site <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
         </div>
       </a>
-
     </div>
   </div>
 </section>
 
-<!-- PROCESS — deep navy, dot grid -->
+<!-- PROCESS -->
 <section class="process" id="process">
   <div class="section-inner">
     <div class="section-label light">How it works</div>
@@ -707,10 +749,12 @@
   </div>
 </section>
 
-<!-- WHY — warm cream, horizontal rule texture, dark quote card -->
+<!-- WHY -->
 <section class="why" id="why">
   <div class="section-inner">
     <div class="why-grid">
+
+      <!-- LEFT: points -->
       <div>
         <div class="section-label">Why LeadPulse</div>
         <h2>We don't just build websites. We build <em>growth engines.</em></h2>
@@ -738,15 +782,69 @@
           </div>
         </div>
       </div>
-          <div>
+
+      <!-- RIGHT: delivery card -->
+      <div class="why-visual">
+        <div class="delivery-header">
+          <div class="section-label light" style="margin-bottom:0;">What you get</div>
+          <div class="delivery-badge">
+            <div class="delivery-dot"></div>
+            Fast delivery
           </div>
         </div>
+
+        <div class="delivery-stat">48<span>hr</span></div>
+        <div class="delivery-stat-label">First draft in your inbox — guaranteed</div>
+
+        <hr class="delivery-divider" />
+
+        <div class="delivery-features">
+          <div class="delivery-feature">
+            <div class="delivery-feature-icon">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="14" rx="1"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <div class="delivery-feature-text">
+              <div class="delivery-feature-title">Pixel-perfect, custom design</div>
+              <div class="delivery-feature-desc">Built to match your brand — not a WordPress theme with your logo dropped in.</div>
+            </div>
+          </div>
+          <div class="delivery-feature">
+            <div class="delivery-feature-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <div class="delivery-feature-text">
+              <div class="delivery-feature-title">Mobile-first, lightning fast</div>
+              <div class="delivery-feature-desc">Loads in under 2 seconds on any device. Google rewards it. Customers stay because of it.</div>
+            </div>
+          </div>
+          <div class="delivery-feature">
+            <div class="delivery-feature-icon">
+              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+            </div>
+            <div class="delivery-feature-text">
+              <div class="delivery-feature-title">SEO-ready from day one</div>
+              <div class="delivery-feature-desc">Structured for Google before we hit publish — so you start ranking right away, not 6 months later.</div>
+            </div>
+          </div>
+          <div class="delivery-feature">
+            <div class="delivery-feature-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="delivery-feature-text">
+              <div class="delivery-feature-title">Hosting + maintenance included</div>
+              <div class="delivery-feature-desc">We keep it live, secure, and up to date. One flat monthly rate — no surprise bills.</div>
+            </div>
+          </div>
+        </div>
+
+        <a href="#contact" class="delivery-cta">Get your site in 48 hours →</a>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- CTA — solid brand blue, dot grid -->
+<!-- CTA -->
 <section class="cta" id="contact">
   <div class="cta-inner">
     <div class="section-label light" style="justify-content:center;">Ready to grow?</div>
